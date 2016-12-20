@@ -6,7 +6,7 @@ spl_autoload_register(function($class_name){
 });
 // Назначаем модуль и действие по умолчанию.
 $module = 'authorization';
-$action = 'index';
+$action = '';
 // Массив параметров из URI запроса.
 $params = array();
 
@@ -40,6 +40,9 @@ if($_SERVER['REQUEST_URI'] !='/'){
 	}
 	
 }
-$router = new Router($module, $action, $params);
-$router->getPage();
+// Вызываем класс и метод если он есть
+$module = new $module;
+if(!empty($action)){
+	$module->$action($params);
+}
 ?>
