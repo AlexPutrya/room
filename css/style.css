@@ -23,3 +23,20 @@ h2{
 .form-signin{
 	margin: 0 auto;
 }
+/*Тест*/
+.reserved{
+    background-color: green;
+}
+table{
+    background-color: white;
+    color: black;
+}
+table tr,
+table td{
+    padding: 10px;
+}
+table th,
+table td,
+table tr {
+        border: 1px solid #000;
+    }

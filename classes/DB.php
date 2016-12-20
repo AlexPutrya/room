@@ -1,7 +1,7 @@
 <?php
 class DB{
-	private $db_user = 'alex';
-	private $db_pass = 'castell13';
+	private $db_user = 'alex.putrya';
+	private $db_pass = 'starwars';
 	private $dsn = "mysql:host=localhost;dbname=room";
 	private $opt = array(
 		PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
