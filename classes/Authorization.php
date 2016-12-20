@@ -4,13 +4,13 @@ class Authorization{
 	private $user_password;
 	private $params;
 	private $database;
-
+	// Получаем данные формы авторизации если их нет выводим форму авторизации
 	public function __construct($params = ""){
 		if(!empty($_POST['user_name'])){
 			$this->user_name = trim(htmlspecialchars($_POST['user_name']));
 			$this->user_password = trim(htmlspecialchars($_POST['user_password']));
 			$this->database = new DB();
-			self::isRegistr();
+			self::authorizated();
 		}else{
 			include 'templates/authorization.tpl';
 		}
@@ -22,13 +22,20 @@ class Authorization{
 		$parametr = array("name" => "$this->user_name");
 		$result = $this->database->getData($sql, $parametr);
 		if(!$result){
-			$message = "Не правильный логин";
+			$message = "Такого пользователя нет";
 			include 'templates/authorization.tpl';
+		}elseif($result['user_pass'] != $this->user_password){
+			$message = "Вы ввели неправильный пароль";
+			include 'templates/authorization.tpl';
+		}else{
+			return true;
 		}
 	}
 
 	public function authorizated(){
-		header('Location: AdminPanel/getPage');
+		if(self::isRegistr()){
+			header('Location: AdminPanel/getPage');
+		}
 	}
 }
 ?>
