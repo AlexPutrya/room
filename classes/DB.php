@@ -12,16 +12,38 @@ class DB{
 	public function __construct(){
 		$this->pdo = new PDO($this->dsn, $this->db_user, $this->db_pass, $this->opt);
 	}
-
-	public function setData($sql, $parametr){
+	// Добавить пользователя в БД после всех условий
+	public function setUser($sql, $parametr){
 		$smtm = $this->pdo->prepare($sql);
 		$smtm->execute($parametr);
 	}
-
-	public function getData($sql, $parametr){
+	// Получить пользователя из БД
+	public function getUser($sql, $parametr = NULL){
+		$smtm = $this->pdo->prepare($sql);
+		if(!empty($parametr)){
+			$smtm->execute($parametr);
+		}else{
+			$smtm->execute();
+		}
+		return $smtm->fetch();
+	}
+	// Получаем в массив id здания и его имя
+	public function getBuild($sql){
+		$smtm = $this->pdo->prepare($sql);
+		$smtm->execute();
+		while($row = $smtm->fetch()){
+			$buildings[$row['id_building']] = $row['building_name'];
+		};
+		return $buildings;
+	}
+	// Получаем массив комнат
+	public function getRooms($sql, $parametr){
 		$smtm = $this->pdo->prepare($sql);
 		$smtm->execute($parametr);
-		return $smtm->fetch();
+		while($row = $smtm->fetch()){
+			$rooms[] = $row['room_name'];
+		}
+		return $rooms;
 	}
 }
 ?>

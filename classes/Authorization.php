@@ -16,11 +16,11 @@ class Authorization{
 		}
 		
 	}
-
+	// Проверям форму авторизации на правильность и соответствие паролю
 	public function isRegistr(){
 		$sql = 'SELECT user_pass FROM users WHERE user_login = :name';
 		$parametr = array("name" => "$this->user_name");
-		$result = $this->database->getData($sql, $parametr);
+		$result = $this->database->getUser($sql, $parametr);
 		if(!$result){
 			$message = "Такого пользователя нет";
 			include 'templates/authorization.tpl';
