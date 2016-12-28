@@ -31,7 +31,7 @@ class Authorization{
 			return true;
 		}
 	}
-
+	// Перенаправляем на панель управления
 	public function authorizated(){
 		if(self::isRegistr()){
 			header('Location: AdminPanel/getPage');

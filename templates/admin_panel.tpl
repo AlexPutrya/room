@@ -3,9 +3,9 @@
                 <h1>Панель бронирования номеров</h1>
             </div>
 
-            <!-- Выводим форму выбора здания -->
+            <!-- Выводим форму выбора здания значение это id здания -->
             <form action="" method="post">
-                Здание <br>
+                <strong>Здание</strong><br>
                 <select name="id_building">
                 <?php
                 foreach($buildings as $key => $value){
@@ -13,6 +13,9 @@
                 }
                 ?>
                 </select><br>
+
+                <strong>Дата</strong><br>
+                <input type='text' class='datepicker-here' name="primary_date" /><br>
                 <input class="btn btn-primary" type="submit"  value="Показать">
             </form>
             <!-- Заголовок таблицы -->
@@ -20,7 +23,7 @@
 
             <!-- Тест  -->
             <?php
-            // Получаем количество дней в жтом месяце
+            // Получаем количество дней в этом месяце
             $number = cal_days_in_month(CAL_GREGORIAN, 11, 2016);
             // Ввыводим кадендарь(таблицу) с комнатами здания
             echo "<table class='table'>";
