@@ -21,10 +21,15 @@ class AdminPanel{
 		$parametr = array("building" => "$this->id_building");
 		return $this->database->getRooms($sql, $parametr);
 	}
+	// 
+	public function getFormDate(){
+		return explode(".", $this->primary_date);
+	}
 	// Получаем окончательный вариант страницы и выводим
 	public function getPage(){
 		$id_building = $this->id_building;
 		$primary_date = $this->primary_date;
+		$date = self::getFormDate();
 		$buildings = self::getBuildings();
 		$rooms = self::getBuildingRooms();
 		include 'templates/header.tpl';
