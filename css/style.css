@@ -41,6 +41,10 @@ th {
   color: #039;
   padding: 10px 15px;
 }
+
+.weekend{
+  background-color: green;
+}
 td {
   color: #669;
   border-top: 1px solid #e8edff;

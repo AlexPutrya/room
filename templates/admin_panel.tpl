@@ -39,7 +39,7 @@
     echo "<th rowspan='3'> Комнаты </th>";
     echo "<th colspan ='" . $number . "'> $first_month </th> ";
     // Выводим второй месяц если он должен быть
-    if($date[0]+30 > $number){
+    if($date[0] > 2){
         echo "<th colspan ='" . "30-$number" . "'> $second_month </th> ";
     }
     echo "</tr>";
@@ -50,7 +50,11 @@
         $dateW = strftime('%w', mktime(0, 0, 0, $date[1], $date[0]+$i, $date[2]));
         $dateM = strftime('%m', mktime(0, 0, 0, $date[1], $date[0]+$i, $date[2]));
         $format = $dateHelper->getDate((int) $dateW, (int) $dateM);
-        echo "<th>" . $format['day'] . "</th>";
+        if($dateW == 6 or $dateW == 0){
+            echo "<th class='weekend'>" . $format['day'] . "</th>";    
+        }else{
+            echo "<th>" . $format['day'] . "</th>";
+        }
     }
     echo "</tr>";
 
