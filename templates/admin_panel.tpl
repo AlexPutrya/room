@@ -25,7 +25,7 @@
     
     <!-- календарь -->
     <?php
-    // $date 0=>день, 1=>месяц, 2=>год
+    // $date текущие 0=>день, 1=>месяц, 2=>год
     $dateHelper = new DateHelper();
     $dayWeek = strftime('%w', mktime(0, 0, 0, $date[1], $date[0], $date[2]));//День недели
     $month = strftime('%m', mktime(0, 0, 0, $date[1], $date[0], $date[2]));//Текущий месяц
@@ -58,7 +58,7 @@
     }
     echo "</tr>";
 
-    // Вводим дни мецяца
+    // Выводим дни мецяца
     echo "<tr>";
     for($i = 0; $i<30; $i++){
         $day = strftime('%d', mktime(0, 0, 0, $date[1], $date[0]+$i, $date[2]));
@@ -69,7 +69,7 @@
     foreach ($rooms as $key => $value) {
         echo "<tr>";
         echo "<th>$value</th>";
-        for ($i=1; $i<30 ; $i++) { 
+        for ($i=1; $i<30 ; $i++) {
             echo "<td></td>";
         }
         echo "</tr>";

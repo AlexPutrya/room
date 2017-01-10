@@ -7,7 +7,7 @@ class AdminPanel{
 	// При создании экземпляра класса конектимся к БД и получаем данные из POST
 	public function __construct(){
 		$this->id_building = empty($_POST['id_building']) ? 1 : $_POST['id_building'];
-		$this->primary_date = empty($_POST['primary_date']) ? "27.12.2016" : $_POST['primary_date'];
+		$this->primary_date = empty($_POST['primary_date']) ? strftime("%d.%m.%Y", time()) : $_POST['primary_date'];//если дата не задана то используем текущую
 		$this->database = new DB();
 	}
 	// Масcив с данными строений
