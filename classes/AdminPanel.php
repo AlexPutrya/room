@@ -32,6 +32,7 @@ class AdminPanel{
 		$date = self::getFormDate();
 		$buildings = self::getBuildings();
 		$rooms = self::getBuildingRooms();
+		$test = self::test();
 		include 'templates/header.tpl';
 		include 'templates/admin_panel.tpl';
 		include 'templates/footer.tpl';
